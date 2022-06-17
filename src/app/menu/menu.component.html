@@ -1,0 +1,25 @@
+<div class="wrap">
+    <div class="content">
+        <br>
+        <div class="headL w-100 d-flex flex-wrap align-items-center flex-column justify-content-around">
+            <h2 class="headline w-100 text-center m-0 mt-5">Our specialities</h2>
+            <hr class="w-100">
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div *ngFor="let product of products; index as productId" class="col p-3">
+                <div class="card border-secondary shadow" style="width: 100%;">
+                    <img src="{{ product.image }}" class="card-img-top" alt="product image">
+                    <div class="card-body">
+                        <h5 class="card-title ">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                    </div>
+                    <div class="card-text border-top border-bottom border-secondary px-3 py-2">{{ product.price | currency: 'EUR' }}</div>
+                    <div class="card-body p-3">
+                        <a routerLink="products/{{ productId }}" class="btn btn-primary">Details</a>
+                        <span class="btn btn-success mx-2" (click)="addToCart(productId)">Order</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

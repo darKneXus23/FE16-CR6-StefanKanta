@@ -1,0 +1,30 @@
+<div class="order">
+    <div class="cart-item" *ngFor="let item of items">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ item.image }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.description }}</p>
+                        <p class="card-text"><small class="text-muted">{{ item.price | currency: 'EUR' }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bill">
+    <div class="card" style="width: 100%;">
+        <h5 class="card-title">Summary</h5>
+        <div class="card-body">
+            <p class="card-text">Total: {{total | currency: 'EUR'}}</p>
+            <p class="card-text">Service: {{serviceT | currency: 'EUR'}}</p>
+            <p class="card-text">Discount: {{discount | currency: 'EUR'}}</p>
+            <hr>
+            <p class="card-text">Total amount (incl VAT) {{totalSer | currency: 'EUR'}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 27rem;
+    .home-headline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Dancing Script', cursive;
+        font-size: 250%;
+        width: 100%;
+    }
+    .h-text {
+        width: 59%;
+        font-size: 75%;
+    }
+}
