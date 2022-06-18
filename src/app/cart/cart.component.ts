@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
     this.total = this.cartService.cartTotal();
     this.serviceT = (this.total * 0.1);
     this.dis = this.total + this.serviceT;
-    if (this.dis >= 20) {
+    if (this.dis >= 40) {
       this.discount = this.dis * 0.15;
     };
     this.totalSer = (this.dis - this.discount);
