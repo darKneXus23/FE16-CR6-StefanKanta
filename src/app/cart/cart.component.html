@@ -1,30 +1,64 @@
-<div class="order">
-    <div class="cart-item" *ngFor="let item of items">
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{ item.image }}" class="img-fluid rounded-start" alt="...">
+<div class="wrap">
+    <div class="content row m-2">
+        <div class="col-12 col-md-8 border p-0 m-0">
+            <div class="h5 border-bottom bg-light p-2">Cart - {{ this.items.length }} Item(s)</div>
+            <ng-template [ngIf]="this.items.length > 0" [ngIfElse]="none">
+                <div class="cart-item p-3" *ngFor="let item of items">
+                    <div class="card border-0" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ item.image }}" class="img-fluid rounded-start" alt="food pic" style="height: 100%;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ item.name }}</h5>
+                                    <p class="card-text">{{ item.description }}</p>
+                                    <p class="card-text border-top border-bottom border-secondary px-3 py-2"><b>Price: {{ item.price | currency: 'EUR' }}</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text">{{ item.description }}</p>
-                        <p class="card-text"><small class="text-muted">{{ item.price | currency: 'EUR' }}</small></p>
+            </ng-template>
+            <ng-template #none>
+                    <div class="m-5">
+                        The Cart is Empty
+                    </div>
+            </ng-template> 
+        </div> 
+        <div class="bill col-12 col-md-4 m-md-auto mt-2">
+            <div class="card" style="width: 100%;">
+                <h5 class="card-title px-3 py-2 bg-light mb-0 border-bottom">Summary <span class="btn btn-sm btn-warning" (click)="clearCart()">Clear</span></h5>
+                <div class="card-body d-flex flex-wrap">
+                    <div class="card-text w-50">Total:</div><div class="card-text text-end w-50">{{total | currency: 'EUR'}}</div>
+                    <div class="card-text w-50">Service:</div><div class="card-text text-end w-50"> {{serviceT | currency: 'EUR'}}</div>
+                    <div class="card-text w-50">Discount:</div><div class="card-text text-end w-50"> {{discount | currency: 'EUR'}}</div>
+                    <div class="w-100">
+                        <hr>
+                        <p class="card-text"><b>Total amount (incl VAT) {{totalSer | currency: 'EUR'}}</b></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="bill">
-    <div class="card" style="width: 100%;">
-        <h5 class="card-title">Summary</h5>
-        <div class="card-body">
-            <p class="card-text">Total: {{total | currency: 'EUR'}}</p>
-            <p class="card-text">Service: {{serviceT | currency: 'EUR'}}</p>
-            <p class="card-text">Discount: {{discount | currency: 'EUR'}}</p>
-            <hr>
-            <p class="card-text">Total amount (incl VAT) {{totalSer | currency: 'EUR'}}</p>
-        </div>
+    <div class="c-form my-5">
+        <h2 class="c-form-h">Order Form</h2>
+        <div class="border-bottom pb-1">please fill up the info for the delivery</div>
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="name" class="my-2">
+                    Name:
+                </label><br>
+                <input class="c-form-input" id="name" type="text" formControlName="name">
+            </div>
+            <div>
+                <label for="address" class="my-3">
+                    Address:
+                </label><br>
+                <input class="c-form-input" id="address" type="text" formControlName="address">
+            </div>
+            <button class="button btn btn-primary my-2" type="submit">Purchase</button>
+        </form>
     </div>
 </div>

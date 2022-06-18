@@ -26,4 +26,7 @@ export class CartService {
     }
     return tAmount;
   }
+  itemsLength(){
+    return this.items.length;
+  }
 }

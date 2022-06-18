@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <img src="../../assets/img/logo.jpg" alt="logo" width="45px" class="mx-2">
     <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,11 @@
                 <a class="nav-link px-1" routerLink="menu">Menu</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-1" routerLink="cart">Cart</a>
+                <a class="nav-link px-1" routerLink="cart">Cart 
+                    <ng-template [ngIf]="count > 0">
+                        <span class="cart-items">{{ count }} Item(s)</span>
+                    </ng-template>
+                </a>
             </li>
         </ul>
     </div>

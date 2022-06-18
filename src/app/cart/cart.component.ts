@@ -1,5 +1,6 @@
 import { emitDistinctChangesOnlyDefaultValue } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { CartService } from '../cart.service';
 import { IProducts } from '../IProducts';
 
@@ -15,7 +16,23 @@ export class CartComponent implements OnInit {
   discount:number = 0;
   totalSer:number = 0;
   dis:number = 0;
-  constructor(private cartService: CartService) { }
+  checkoutForm = this.fb.group({
+    name: "",
+    address:"",
+  });
+  constructor(private cartService: CartService, private fb: FormBuilder) { }
+
+  clearCart() {
+    window.alert('Your cart has been cleared');
+    this.items = this.cartService.clearCart();
+  }
+  
+   onSubmit() {
+    window.alert('Your order has been submitted')
+    console.warn(this.checkoutForm.value, this.items, this.totalSer);
+    this.items = this.cartService.clearCart();
+    this.checkoutForm.reset();
+  }
 
   ngOnInit(): void {
     this.items = this.cartService.getItems();
@@ -26,5 +43,15 @@ export class CartComponent implements OnInit {
       this.discount = this.dis * 0.15;
     };
     this.totalSer = (this.dis - this.discount);
+  }
+  ngDoCheck(): void {
+    if (this.items.length < 1) {
+      this.total = 0;
+      this.serviceT = 0;
+      this.discount = 0;
+      this.totalSer = 0;
+      this.dis = 0;
+    }
+      
   }
 }

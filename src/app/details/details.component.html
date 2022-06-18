@@ -1,15 +1,20 @@
-<div *ngIf="product">
-    <div class="card mb-3" style="max-width: 540px;">
+<app-hero></app-hero>
+<div class="mt-4 mb-5">
+    <div *ngIf="product" class="card mb-3" >
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="{{ product.image }}" class="img-fluid rounded-start" alt="...">
+                <img src="{{ product.image }}" class="img-fluid rounded-start m-1" alt="..." style="width: 100%;">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <p class="card-text"><small class="text-muted">{{ product.price }}</small></p>
-                    <button (click)="addToCart()">Buy</button>
+            <div class="col-md-6">
+                <div class="card-body p-2 mt-3">
+                    <h5 class="card-title h4">{{ product.name }}</h5><br><br>
+                    <p class="card-text mb-1">{{ product.description }}</p><br><br><br><br>
+                    <div class="card-text border-top border-bottom border-secondary px-3 py-2">{{ product.price | currency: 'EUR' }}</div>
+                </div>
+            </div>
+            <div class="col-md-2 d-flex justify-content-around">
+                <div class="card-body p-2 d-flex justify-content-center align-items-center">
+                    <p (click)="addToCart()" class="btn btn-success mb-2 mt-3 mx-4">Order</p>
                 </div>
             </div>
         </div>

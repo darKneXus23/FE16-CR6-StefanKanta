@@ -1,19 +1,66 @@
+.home-headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 250%;
+    width: 100%;
+    overflow: auto;
+}
+.h-text {
+    font-size: 90%;
+}
 .home {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    height: 27rem;
-    .home-headline {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Dancing Script', cursive;
-        font-size: 250%;
-        width: 100%;
-    }
-    .h-text {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    .h-text-sm {
         width: 59%;
-        font-size: 75%;
+        font-size: 72%;
+    }
+}
+.h-choose {
+    height: 20rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    .h-ol{
+        list-style-position: inside;
+        .h-choose-li {
+            width: 30%;
+        } 
+    }
+}
+.h-btns {
+    width:30%;
+    .h-btn{
+        height: 2rem;
+    }
+}
+@media (max-width: 768px) {
+    .h-img {
+        width: 70%;
+    }
+    .h-specials {
+        width: 50%;
+    }
+    .h-specials-img{
+        width: 95%;
+    }
+}
+@media (min-width: 769px) {
+    .h-img {
+        width: 30%;
+    }
+    .h-specials {
+        width: 28%;
+    }
+    .h-specials-img{
+        width: 35%;
     }
 }
